@@ -18,7 +18,7 @@ framework:
     form: ~
     csrf_protection: ~
     validation: { enable_annotations: true }
-    #serializer: { enable_annotations: true }
+#    serializer: { enable_annotations: true }
     templating:
         engines: ['twig']
     default_locale: '%locale%'
@@ -26,7 +26,7 @@ framework:
     session:
         # https://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id: session.handler.native_file
-        save_path: '%kernel.project_dir%/var/sessions/%kernel.environment%'
+        save_path: '/tmp/sessions/%kernel.environment%'
     fragments: ~
     http_method_override: true
     assets: ~
@@ -74,3 +74,28 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+
+# Nelmio CORS Configuration
+nelmio_cors:
+    defaults:
+        allow_credentials: false
+        allow_origin: ['*']
+        allow_headers: ['*']
+        allow_methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+        max_age: 3600
+        hosts: []
+        origin_regex: false
+
+# FOSRest Configuration
+fos_rest:
+    body_listener: true
+    format_listener:
+        rules:
+#            - { path: '^/', priorities: ['json'], fallback_format: json, prefer_extension: false }
+            - { path: '^/api/', priorities: ['json'], fallback_format: json, prefer_extension: false }
+            - { path: '^/', priorities: ['text/html'], fallback_format: false, prefer_extension: false }
+    param_fetcher_listener: true
+    view:
+        view_response_listener: 'force'
+        formats:
+            json: true

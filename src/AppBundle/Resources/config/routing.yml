@@ -3,3 +3,99 @@ app.homepage:
     defaults:
         _controller: AppBundle:Default:index
     methods: [GET]
+
+# TaskBoardController Routing
+app.task_board:
+    path: /task-board/{id}
+    defaults:
+        _controller: AppBundle:TaskBoard:show
+    methods: [GET]
+
+# TaskBoardController API Routing
+app.api.task_board:
+    path: /api/task-board/{id}
+    defaults:
+        _controller: AppBundle:TaskBoard:get
+    methods: [GET]
+
+app.api.task_boards:
+    path: /api/task-board
+    defaults:
+        _controller: AppBundle:TaskBoard:getAll
+    methods: [GET]
+
+app.api.task_board.lists:
+    path: /api/task-board/{id}/lists
+    defaults:
+        _controller: AppBundle:TaskBoard:getLists
+    methods: [GET]
+
+app.api.task_board.tasks:
+    path: /api/task-board/{id}/tasks
+    defaults:
+        _controller: AppBundle:TaskBoard:getTasks
+    methods: [GET]
+
+# TaskListController API routing
+app.api.task_list:
+    path: /api/task-list/{id}
+    defaults:
+        _controller: AppBundle:TaskList:get
+    methods: [GET]
+
+app.api.task_list.board:
+    path: /api/task-list/{id}/board
+    defaults:
+        _controller: AppBundle:TaskList:getBoard
+    methods: [GET]
+
+app.api.task_list.tasks:
+    path: /api/task-list/{id}/tasks
+    defaults:
+        _controller: AppBundle:TaskList:getTasks
+    methods: [GET]
+
+# TaskController API routing
+app.api.task:
+    path: /api/task/{id}
+    defaults:
+        _controller: AppBundle:Task:get
+    methods: [GET]
+
+app.api.task.list:
+    path: /api/task/{id}/list
+    defaults:
+        _controller: AppBundle:Task:getList
+    methods: [GET]
+
+app.api.task.board:
+    path: /api/task/{id}/board
+    defaults:
+        _controller: AppBundle:Task:getBoard
+    methods: [GET]
+
+app.api.task.comments:
+    path: /api/task/{id}/comments
+    defaults:
+        _controller: AppBundle:Task:getComments
+    methods: [GET]
+
+# CommentController API routing
+app.api.comment:
+    path: /api/comment/{id}
+    defaults:
+        _controller: AppBundle:Comment:get
+    methods: [GET]
+
+app.api.comment.task:
+    path: /api/comment/{id}/task
+    defaults:
+        _controller: AppBundle:Comment:getTask
+    methods: [GET]
+
+# TagController API routing
+app.api.tag:
+    path: /api/tag/{id}
+    defaults:
+        _controller: AppBundle:Tag:get
+    methods: [GET]
