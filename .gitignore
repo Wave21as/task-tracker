@@ -39,3 +39,6 @@
 
 # Backup entities generated with doctrine:generate:entities command
 **/Entity/*~
+
+# Logs
+ubuntu-xenial-16.04-cloudimg-console.log
